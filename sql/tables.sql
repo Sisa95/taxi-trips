@@ -7,7 +7,7 @@ create table route(
 create table taxi(
     id serial not null primary key, 
     reg_number text not null unique,
-    trip_counter int
+    region text not null
 );
 
 create table region(
