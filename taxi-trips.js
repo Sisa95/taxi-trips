@@ -11,12 +11,12 @@ module.exports = function (pool) {
         allRegion.rows.forEach(element => {
             arr.push(element.name)
         });
-        
+
         return arr
     }
 
     async function findTaxisForRegion(){
-       // const taxiForRegion = await pool.query(`select * `)
+       const taxiForRegion = await pool.query(`select * `)
         
     }
 
