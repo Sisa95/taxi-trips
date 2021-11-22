@@ -17,6 +17,7 @@ module.exports = function (pool) {
 
     async function findTaxisForRegion(region) {
         const taxiForRegion = await pool.query(`select * from where name = ${region}`)
+        console.log(taxiForRegion.rows)
         
     }
 
