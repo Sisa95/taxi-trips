@@ -17,6 +17,7 @@ create table region(
 
 create table trip(
     id serial not null primary key,
+    trip_counter int
     route_id int,
     taxi_id int,
     region_id int,

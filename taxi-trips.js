@@ -1,13 +1,13 @@
 module.exports = function (pool) {
 
-    async function totalTripCount(){ 
-        
+    async function totalTripCount() {
+
     }
 
-    async function findAllRegions(){
+    async function findAllRegions() {
         let arr = [];
         const allRegion = await pool.query(`select * from region`);
-        
+
         allRegion.rows.forEach(element => {
             arr.push(element.name)
         });
@@ -15,32 +15,33 @@ module.exports = function (pool) {
         return arr
     }
 
-    async function findTaxisForRegion(){
-       const taxiForRegion = await pool.query(`select * `)
+    async function findTaxisForRegion(region) {
+        const taxiForRegion = await pool.query(`select * from where name = ${region}`)
         
     }
 
-    async function findTripsByRegNumber(){
+
+    async function findTripsByRegNumber() {
 
     }
 
-    async function findTripsByRegion(){
+    async function findTripsByRegion() {
 
     }
 
-    async function findIncomeByRegNumber(){
+    async function findIncomeByRegNumber() {
 
     }
 
-    async function findTotalIncomePerTaxi(){
-        
-    }
-
-    async function findTotalIncome(){
+    async function findTotalIncomePerTaxi() {
 
     }
 
-    async function findTotalIncomeByRegion(){
+    async function findTotalIncome() {
+
+    }
+
+    async function findTotalIncomeByRegion() {
 
     }
 
