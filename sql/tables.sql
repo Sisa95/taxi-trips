@@ -7,19 +7,19 @@ create table route(
 create table taxi(
     id serial not null primary key, 
     reg_number text not null unique,
-    --region text not null
+    region text not null
 );
 
 create table region(
     id serial not null primary key, 
-    name text not null
+    name text not null,
     taxi_id int,
-    --foreign key (taxi_id) references taxi(id),
+    foreign key (taxi_id) references taxi(id)
 );
 
 create table trip(
     id serial not null primary key,
-    trip_counter int
+    trip_counter int,
     route_id int,
     taxi_id int,
     region_id int,
