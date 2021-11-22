@@ -3,7 +3,7 @@ let TaxiTrips = require("../taxi-trips");
 const pg = require("pg");
 const Pool = pg.Pool;
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://localhost:5432/my_balloon_tests';
+const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:codex123@localhost:5432/taxi_trip_db';
 
 const pool = new Pool({
     connectionString
@@ -11,11 +11,15 @@ const pool = new Pool({
 
 describe('Taxi Trips', function () {
 
-    // beforeEach(async function () {
+    beforeEach(async function () {
+        await pool.query("delete from route");
+        await pool.query("delete from taxi");
+        await pool.query("delete from region");
+        await pool.query("delete from trip");
         
-    // });
+     });
 
-    it('should find how many trips all the taxis made', async function () {
+    it.skip('should find how many trips all the taxis made', async function () {
 
         const taxiTrips = TaxiTrips(pool);
 
@@ -27,12 +31,11 @@ describe('Taxi Trips', function () {
     it('should find all the regions', async function () {
 
         const taxiTrips = TaxiTrips(pool);
-
-        assert.deepStrictEqual([], taxiTrips.findAllRegions());
-
+        
+        assert.deepStrictEqual([], await taxiTrips.findAllRegions());
     });
 
-    it('should find all the taxis for a region', async function () {
+    it.skip('should find all the taxis for a region', async function () {
         const taxiTrips = TaxiTrips(pool);
 
         assert.deepStrictEqual([], taxiTrips.findTaxisForRegion('Durban'));
@@ -41,7 +44,7 @@ describe('Taxi Trips', function () {
 
     })
 
-    it('should find all the trips for a reg number', async function () {
+    it.skip('should find all the trips for a reg number', async function () {
 
         const taxiTrips = TaxiTrips(pool);
         
@@ -50,7 +53,7 @@ describe('Taxi Trips', function () {
 
     });
 
-    it('should find the total number of trips by region', async function () {
+    it.skip('should find the total number of trips by region', async function () {
 
         const taxiTrips = TaxiTrips(pool);
 
@@ -60,7 +63,7 @@ describe('Taxi Trips', function () {
 
     });
 
-    it('find the total income for a given reg number', async function () {
+    it.skip('find the total income for a given reg number', async function () {
 
         const taxiTrips = TaxiTrips(pool);
         assert.deepStrictEqual(0, taxiTrips.findIncomeByRegNumber('...').length);
@@ -68,14 +71,14 @@ describe('Taxi Trips', function () {
 
     });
 
-    it('find the total income for each taxi', async function () {
+    it.skip('find the total income for each taxi', async function () {
 
         const taxiTrips = TaxiTrips(pool);
         assert.deepStrictEqual([{}, {}, {}], taxiTrips.findTotalIncomePerTaxi());
 
     });
 
-    it('find the total income for all the taxis', async function () {
+    it.skip('find the total income for all the taxis', async function () {
         const taxiTrips = TaxiTrips(pool);
         assert.deepStrictEqual(0.00, taxiTrips.findTotalIncome());
     });
