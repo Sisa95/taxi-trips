@@ -5,13 +5,18 @@ module.exports = function (pool) {
     }
 
     async function findAllRegions(){
+        let arr = [];
         const allRegion = await pool.query(`select * from region`);
-        console.log(">>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<< ",allRegion.rows)
-        return allRegion.rows;
+        
+        allRegion.rows.forEach(element => {
+            arr.push(element.name)
+        });
+        
+        return arr
     }
 
     async function findTaxisForRegion(){
-        const taxiForRegion = await pool.query(`select * `)
+       // const taxiForRegion = await pool.query(`select * `)
         
     }
 
