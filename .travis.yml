@@ -6,7 +6,7 @@ env:
 before_script:
   - npm install
   - psql -c 'create database  taxi_trip_db;' -U postgres
-  - psql -U postgres -d taxi_trip_db -a -f ./tables.sql
+  - psql -U postgres -d taxi_trip_db -a -f sql/tables.sql
 services:
   - postgresql
 addons:
