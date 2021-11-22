@@ -13,6 +13,8 @@ create table taxi(
 create table region(
     id serial not null primary key, 
     name text not null
+    taxi_id int,
+    foreign key (taxi_id) references taxi(id),
 );
 
 create table trip(

@@ -32,7 +32,7 @@ describe('Taxi Trips', function () {
 
         const taxiTrips = TaxiTrips(pool);
         
-        assert.deepEqual(['Durban','Cape Town','Gauteng'], await taxiTrips.findAllRegions());
+        assert.deepEqual(["Durban","Cape Town","Gauteng"], await taxiTrips.findAllRegions());
     });
 
     it.skip('should find all the taxis for a region', async function () {
